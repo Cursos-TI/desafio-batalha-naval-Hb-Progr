@@ -1,15 +1,12 @@
 #include <stdio.h>
 
-// Desafio Batalha Naval - MateCheck
-// Este código inicial serve como base para o desenvolvimento do sistema de Batalha Naval.
-// Siga os comentários para implementar cada parte do desafio.
+#define tam 10
+#define tam_navio 3
+#define agua 0
+#define navio 3
 
 int main() {
-    // Nível Novato - Posicionamento dos Navios
-    // Sugestão: Declare uma matriz bidimensional para representar o tabuleiro (Ex: int tabuleiro[5][5];).
-    // Sugestão: Posicione dois navios no tabuleiro, um verticalmente e outro horizontalmente.
-    // Sugestão: Utilize `printf` para exibir as coordenadas de cada parte dos navios.
-
+    
     // Nível Aventureiro - Expansão do Tabuleiro e Posicionamento Diagonal
     // Sugestão: Expanda o tabuleiro para uma matriz 10x10.
     // Sugestão: Posicione quatro navios no tabuleiro, incluindo dois na diagonal.
@@ -35,6 +32,53 @@ int main() {
     // 0 0 1 0 0
     // 1 1 1 1 1
     // 0 0 1 0 0
+
+  char linha[tam] = {'A', 'B','C','D','E','F','G','H','I','J'};
+  int tabuleiro [tam][tam];
+
+  int navio_horizontal[tam_navio] = {navio, navio, navio};
+  int navio_vertical[tam_navio] = {navio,navio,navio};
+  int navio_diag1[tam_navio] = {navio, navio, navio};
+  int navio_diag2[tam_navio] = {navio,navio,navio};
+
+  int i,j;
+  int sobrepoe;
+
+  for (i=0; i < tam; i++) {
+    for(j = 0; j < tam; j++) {
+        tabuleiro[i][j] = agua;
+    }
+  }
+  
+    int linha_navio_h = 2;
+    int coluna_navio_h = 1;
+
+    int linha_navio_v = 5;
+    int oluna_navio_v = 7;
+
+    int inicio_diag1 = 4;
+
+    int inicio_diag2_linha = 0;
+
+    if (linha_navio_h >= 0 && linha_navio_h < tam && coluna_navio_h >= 0 && coluna_navio_h + tam_navio - 1 < tam){
+        sobrepoe = 0;
+        for (j = 0; j < tam_navio; j++) {
+            if (tabuleiro [linha_navio_h]
+            [coluna_navio_h + j] != agua) {
+                sobrepoe = 1;
+                break;
+            }
+        }
+        if (!sobrepoe) {
+            for (j = 0; j < tam_navio; j++){
+                tabuleiro[linha_navio_h]
+                [coluna_navio_h + j] = navio_horizontal[j];
+            }
+        }
+    }
+   
+
+
 
     return 0;
 }
