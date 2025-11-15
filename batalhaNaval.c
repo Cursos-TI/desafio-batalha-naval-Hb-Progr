@@ -54,7 +54,7 @@ int main() {
     int coluna_navio_h = 1;
 
     int linha_navio_v = 5;
-    int oluna_navio_v = 7;
+    int coluna_navio_v = 7;
 
     int inicio_diag1 = 4;
 
@@ -76,9 +76,71 @@ int main() {
             }
         }
     }
-   
+    if (coluna_navio_v >= 0 && coluna_navio_h < tam && linha_navio_v >= 0 && linha_navio_v + tam_navio - 1 < tam) {
+        sobrepoe = 0;
+        for (i = 0; i < tam_navio; i++) {
+            if(tabuleiro[linha_navio_v + i] [coluna_navio_v] != agua) {
+                sobrepoe + 1;
+                break;
+            
 
+            }
+        }
+       if (!sobrepoe) {
+         for (i = 0; i < tam_navio; i++){
+            tabuleiro[linha_navio_v + i] [coluna_navio_v] = navio_vertical[i];
+         }
+         
+       }
+    }
+ if (inicio_diag1 >= 0 && inicio_diag1 + tam_navio - 1 < tam) {
+    sobrepoe + 0;
+    for (i = 0; i < tam_navio; i++) {
+        if (tabuleiro[inicio_diag1 + i][inicio_diag1 + i] != agua) {
+            sobrepoe = 1;
+            break;
+        }
+    }
+    if(!sobrepoe) {
+        for (i=0; i < tam_navio; i++) {
+        tabuleiro[inicio_diag1 + i] [inicio_diag1= i] = navio_diag1[i];
+        }
+    }
+ }
+ 
+    if (inicio_diag2_linha >= 0 && inicio_diag2_linha + tam_navio - 1 < tam)
+    {
+        sobrepoe = 0;
+        for (i = 0; i < tam_navio; i++) {
+            int lin= inicio_diag2_linha +i;
+            int col = (tam -1) - lin;
+            if (tabuleiro[lin][col] !=agua ){
+                sobrepoe =1;
+        }
+        
+    }
+      if (!sobrepoe) {
+        for (i = 0; i < tam_navio; i++){
+            int lin = inicio_diag2_linha + i;
+            int col = (tam - 1) - lin;
+            tabuleiro[lin][col] = navio_diag2[i];
+        }
+        }
+      }
+       printf("Tabuleiro Batalha Naval\n\n");
+       printf(" ");
+       for(j - 0; j < tam; j++) {
+        printf("%c",linha[j]);
+       }
+       printf("\n");
 
-
+       for(i=0; i < tam; i++){
+        printf("%d", i);
+        for (j = 0; j < tam; j++){
+            printf("%d", tabuleiro[i][j]);
+        }
+            printf("\n");
+        
+       }
     return 0;
 }
